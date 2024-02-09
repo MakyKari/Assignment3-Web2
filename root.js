@@ -6,7 +6,12 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
 const app = express();
-const port = 3000;
+app.listen(process.env.PORT);
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
+app.listen(port);
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
