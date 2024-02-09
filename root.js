@@ -7,13 +7,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
-});
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 3000;
-}
+let port = process.env.PORT || 3000;
 
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
