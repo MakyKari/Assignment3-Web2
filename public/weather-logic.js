@@ -57,8 +57,7 @@ form.addEventListener("submit", async function (event) {
     document.getElementById('day').innerHTML = `${getDayName(dayOfWeek)}`
     document.getElementById('date').innerHTML = `${getMonthName(month)}, ${dayOfMonth} ${year}`
 
-    const lon = data.weather.coord.lon
-    const lat = data.weather.coord.lat
+
     const humidity = data.weather.main.humidity
     const pressure = data.weather.main.pressure
     const windspeed = data.weather.wind.speed
@@ -77,15 +76,16 @@ form.addEventListener("submit", async function (event) {
     
     const AQbar = document.getElementById("AQ");
 
-    setTimeout(() => {
+    if(data.AQ.aqi) {
         AQbar.style.setProperty("--progress", `${data.AQ.aqi}%`);
-    }, 250);
+    } else {
+        AQbar.style.setProperty("--progress", `0%`);
+    }
+    
 
     const SRbar = document.getElementById("SR");
 
-    setTimeout(() => {
-        SRbar.style.setProperty("--progress", `${data.SR}%`);
-    }, 250);
+    SRbar.style.setProperty("--progress", `${data.SR}%`);
 
 })  
     

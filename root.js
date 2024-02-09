@@ -99,15 +99,19 @@ app.post('/main/:userId', async (req, res) => {
         console.log('Data already exists for this user and location');
         try {
             res.send({
+                lat: usersLastData[0].history.weather.coord.lat,
+                lon: usersLastData[0].history.weather.coord.lon,
                 weather: usersLastData[0].history.weather,
-                AQ: usersLastData[0].history.airQuality,
-                SR: usersLastData[0].history.solarRadiation
+                AQ: { aqi: usersLastData[0].history.airQuality.indexes[0].aqi   },
+                SR: usersLastData[0].history.solarRadiation.daily.shortwave_radiation_sum[0]
             });
         } catch (error) {
             res.send({
+                lat: usersLastData[0].history.weather.coord.lat,
+                lon: usersLastData[0].history.weather.coord.lon,
                 weather: usersLastData[0].history.weather,
                 AQ: {},
-                SR: usersLastData[0].history.solarRadiation
+                SR: usersLastData[0].history.solarRadiation.daily.shortwave_radiation_sum[0]
             });
         }
         res.status(200).end();
