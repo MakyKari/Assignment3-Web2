@@ -18,7 +18,12 @@ Admin Panel:
 
 Pages:
 /login
+
 /register
+
 /main/{userId} - shows weather
+
 /history/{userId}- shows weather history
+
 /admin
+
