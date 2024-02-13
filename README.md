@@ -15,3 +15,10 @@ Admin Panel:
 2) write username: Aisultan
    password: admin
 3) you can add, update, delete users
+
+Pages:
+/login
+/register
+/main/{userId} - shows weather
+/history/{userId}- shows weather history
+/admin
